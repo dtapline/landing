@@ -1,2 +1,6 @@
-https://dtapline.com/* https://app.dtapline.com/:splat 302
-https://www.dtapline.com/* https://app.dtapline.com/:splat 302
+# Redirect www first, then non-www
+https://www.dtapline.com/* https://app.dtapline.com/:splat 302!
+https://dtapline.com/* https://app.dtapline.com/:splat 302!
+
+# Catch-all fallback
+/* https://app.dtapline.com/:splat 302
