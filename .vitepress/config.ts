@@ -13,7 +13,7 @@ export default defineConfig({
   ignoreDeadLinks: [/^http:\/\/localhost/, /^https:\/\/localhost/],
 
   head: [
-    ["link", { rel: "icon", type: "image/png", href: "/logo.png" }],
+    ["link", { rel: "icon", type: "image/png", href: "/favicon.svg" }],
     ["meta", { name: "theme-color", content: "#145" }],
     ["meta", { name: "og:type", content: "website" }],
     ["meta", { name: "og:locale", content: "en" }],
