@@ -6,10 +6,10 @@
 :root {
   /* Override VitePress default colors with dtapline design tokens */
   
-  /* Light mode (dtapline uses dark by default, but we support both) */
-  --vp-c-brand-1: oklch(0.205 0 0);
-  --vp-c-brand-2: oklch(0.269 0 0);
-  --vp-c-brand-3: oklch(0.556 0 0);
+  /* Light mode - using violet (#8B5CF6) as primary */
+  --vp-c-brand-1: #8B5CF6;
+  --vp-c-brand-2: #7C3AED;
+  --vp-c-brand-3: #A78BFA;
   
   /* Background and text */
   --vp-c-bg: oklch(1 0 0);
@@ -24,10 +24,10 @@
 }
 
 .dark {
-  /* Dark mode - dtapline default theme */
-  --vp-c-brand-1: oklch(0.922 0 0);
-  --vp-c-brand-2: oklch(0.556 0 0);
-  --vp-c-brand-3: oklch(0.269 0 0);
+  /* Dark mode - using violet (#8B5CF6) as primary */
+  --vp-c-brand-1: #A78BFA;
+  --vp-c-brand-2: #8B5CF6;
+  --vp-c-brand-3: #7C3AED;
   
   /* Background and text */
   --vp-c-bg: oklch(0.145 0 0);
@@ -42,21 +42,40 @@
 }
 
 /* Custom hero section styling */
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: -200% 50%;
+  }
+}
+
 .VPHome .VPHero .name {
-  background: linear-gradient(120deg, 
-    oklch(0.205 0 0) 0%,
-    oklch(0.556 0 0) 100%
+  background: linear-gradient(90deg, 
+    #22D3EE 0%,
+    #10B981 25%,
+    #F59E0B 50%,
+    #8B5CF6 75%,
+    #22D3EE 100%
   );
+  background-size: 200% 100%;
+  animation: gradient-flow 4s linear infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .dark .VPHome .VPHero .name {
-  background: linear-gradient(120deg, 
-    oklch(0.922 0 0) 0%,
-    oklch(0.556 0 0) 100%
+  background: linear-gradient(90deg, 
+    #22D3EE 0%,
+    #10B981 25%,
+    #F59E0B 50%,
+    #8B5CF6 75%,
+    #22D3EE 100%
   );
+  background-size: 200% 100%;
+  animation: gradient-flow 4s linear infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
