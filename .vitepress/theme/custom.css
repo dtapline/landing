@@ -1,0 +1,300 @@
+/**
+ * Custom styles for Dtapline landing page
+ * Matching the dtapline app design using OKLCH color space
+ */
+
+:root {
+  /* Override VitePress default colors with dtapline design tokens */
+  
+  /* Light mode (dtapline uses dark by default, but we support both) */
+  --vp-c-brand-1: oklch(0.205 0 0);
+  --vp-c-brand-2: oklch(0.269 0 0);
+  --vp-c-brand-3: oklch(0.556 0 0);
+  
+  /* Background and text */
+  --vp-c-bg: oklch(1 0 0);
+  --vp-c-bg-soft: oklch(0.97 0 0);
+  --vp-c-bg-mute: oklch(0.97 0 0);
+  --vp-c-text-1: oklch(0.145 0 0);
+  --vp-c-text-2: oklch(0.556 0 0);
+  
+  /* Border radius matching dtapline (0.625rem = 10px) */
+  --vp-button-border-radius: 0.625rem;
+  --vp-input-border-radius: 0.625rem;
+}
+
+.dark {
+  /* Dark mode - dtapline default theme */
+  --vp-c-brand-1: oklch(0.922 0 0);
+  --vp-c-brand-2: oklch(0.556 0 0);
+  --vp-c-brand-3: oklch(0.269 0 0);
+  
+  /* Background and text */
+  --vp-c-bg: oklch(0.145 0 0);
+  --vp-c-bg-soft: oklch(0.205 0 0);
+  --vp-c-bg-mute: oklch(0.269 0 0);
+  --vp-c-text-1: oklch(0.985 0 0);
+  --vp-c-text-2: oklch(0.556 0 0);
+  
+  /* Borders */
+  --vp-c-divider: oklch(1 0 0 / 10%);
+  --vp-c-border: oklch(1 0 0 / 15%);
+}
+
+/* Custom hero section styling */
+.VPHome .VPHero .name {
+  background: linear-gradient(120deg, 
+    oklch(0.205 0 0) 0%,
+    oklch(0.556 0 0) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .VPHome .VPHero .name {
+  background: linear-gradient(120deg, 
+    oklch(0.922 0 0) 0%,
+    oklch(0.556 0 0) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Feature grid cards */
+.VPFeature {
+  border-radius: 0.625rem;
+  transition: all 150ms;
+}
+
+.VPFeature:hover {
+  transform: translateY(-2px);
+}
+
+/* Status color utilities for documentation */
+.status-success {
+  color: oklch(0.6 0.15 145);
+  background: oklch(0.6 0.15 145 / 10%);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+}
+
+.status-failed {
+  color: oklch(0.577 0.245 27.325);
+  background: oklch(0.577 0.245 27.325 / 10%);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+}
+
+.status-in-progress {
+  color: oklch(0.7 0.2 60);
+  background: oklch(0.7 0.2 60 / 10%);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+}
+
+/* Code blocks with dtapline styling */
+.vp-code-group .tabs {
+  border-radius: 0.625rem 0.625rem 0 0;
+}
+
+div[class*='language-'] {
+  border-radius: 0.625rem;
+  margin: 1rem 0;
+}
+
+/* Custom button styling */
+.VPButton {
+  border-radius: 0.625rem !important;
+  font-weight: 500;
+  transition: all 150ms;
+}
+
+.VPButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px oklch(0 0 0 / 15%);
+}
+
+/* Pricing cards */
+.pricing-card {
+  border: 1px solid var(--vp-c-border);
+  border-radius: 0.625rem;
+  padding: 2rem;
+  background: var(--vp-c-bg-soft);
+  transition: all 150ms;
+}
+
+.pricing-card:hover {
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px oklch(0 0 0 / 10%);
+}
+
+.pricing-card.featured {
+  border-color: var(--vp-c-brand-1);
+  border-width: 2px;
+  background: var(--vp-c-bg);
+}
+
+.pricing-price {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 1rem 0;
+  color: var(--vp-c-brand-1);
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.pricing-features li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.pricing-features li:last-child {
+  border-bottom: none;
+}
+
+/* Email capture form */
+.email-capture {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 400px;
+  margin: 1.5rem auto;
+}
+
+.email-capture input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--vp-c-border);
+  border-radius: 0.625rem;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 1rem;
+}
+
+.email-capture input:focus {
+  outline: none;
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 0 0 3px oklch(0.556 0 0 / 20%);
+}
+
+.email-capture button {
+  padding: 0.75rem 1.5rem;
+  background: var(--vp-c-brand-1);
+  color: var(--vp-c-bg);
+  border: none;
+  border-radius: 0.625rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.email-capture button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px oklch(0 0 0 / 20%);
+}
+
+/* Screenshot container */
+.screenshot-container {
+  border-radius: 0.625rem;
+  overflow: hidden;
+  margin: 2rem 0;
+  box-shadow: 0 8px 32px oklch(0 0 0 / 15%);
+  border: 1px solid var(--vp-c-border);
+}
+
+.screenshot-container img {
+  width: 100%;
+  display: block;
+}
+
+/* Custom logo styling in nav - smaller with margin */
+.VPNavBarTitle .logo {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  margin-right: 12px;
+}
+
+/* Make hero showcase image bigger */
+.VPHome .VPHero .VPImage {
+  max-width: 600px !important;
+}
+
+.VPHome .VPHero .image-container {
+  max-width: 600px !important;
+}
+
+.VPHome .VPHero .image img {
+  max-width: 100% !important;
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 0.625rem;
+  box-shadow: 0 8px 32px oklch(0 0 0 / 20%);
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pricing-price {
+    font-size: 2rem;
+  }
+  
+  .email-capture {
+    flex-direction: column;
+  }
+  
+  .email-capture button {
+    width: 100%;
+  }
+  
+  .VPNavBarTitle .logo {
+    height: 36px;
+  }
+  
+  .VPNavBar .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  .VPHome .VPHero .main {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  .VPHome .VPFeatures {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  .VPHome .VPHero .VPImage {
+    width: 100% !important;
+  }
+  
+  .VPHome .VPHero .image img {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .VPHome .VPHero .VPImage {
+    max-width: 750px !important;
+  }
+
+  .VPHome .VPHero .image img {
+    position: relative;
+    top: 43px;
+  }
+  
+  .VPHome .VPHero .image-container {
+    max-width: 750px !important;
+    transform: none
+  }
+}
