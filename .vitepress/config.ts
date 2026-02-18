@@ -27,9 +27,19 @@ export default defineConfig({
       "meta",
       { name: "twitter:image", content: "https://dtapline.com/showcase.png" },
     ],
-    // Google Analytics - Replace YOUR_GA_ID with your actual Google Analytics ID
-    // ['script', { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID' }],
-    // ['script', {}, "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'YOUR_GA_ID');"],
+    // Google Analytics
+    [
+      "script",
+      {
+        async: "",
+        src: "https://www.googletagmanager.com/gtag/js?id=G-7GTBT807M9",
+      },
+    ],
+    [
+      "script",
+      {},
+      "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-7GTBT807M9');",
+    ],
   ],
 
   themeConfig: {
@@ -66,12 +76,12 @@ function nav() {
   return [
     { text: "Home", link: "/" },
     { text: "Docs", link: "/docs/introduction", activeMatch: "/docs/" },
-    { 
+    {
       text: "Account",
       items: [
         { text: "Login", link: "https://app.dtapline.com/login" },
         { text: "Sign Up", link: "https://app.dtapline.com/signup" },
-      ]
+      ],
     },
   ];
 }
