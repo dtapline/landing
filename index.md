@@ -226,7 +226,7 @@ stage('Report Deployment') {
     <div class="pricing-price">$0</div>
     <p style="color: var(--vp-c-text-2);">Forever</p>
     <ul class="pricing-features">
-      <li>✅ 10 projects</li>
+      <li>✅ 5 projects</li>
       <li>✅ 10 services</li>
       <li>✅ Deployment webhooks</li>
       <li>✅ Unlimited deployments</li>
