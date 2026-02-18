@@ -62,7 +62,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: "Released under the AGPL-3.0 License.",
+      message: "Built with modern technology for open source teams.",
       copyright: "Copyright © 2026-present Dtapline Contributors",
     },
 
@@ -76,6 +76,7 @@ function nav() {
   return [
     { text: "Home", link: "/" },
     { text: "Docs", link: "/docs/introduction", activeMatch: "/docs/" },
+    { text: "Sponsor", link: "https://github.com/sponsors/floydspace" },
     {
       text: "Account",
       items: [

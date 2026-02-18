@@ -40,8 +40,8 @@ features:
     details: Works seamlessly with GitOps and Kubernetes-native deployment workflows. Track deployments regardless of how they're deployed.
     
   - icon: 🏠
-    title: Open Source & Self-Hosted
-    details: AGPL-3.0 licensed. Deploy to AWS Lambda, or bare metal. Full control over your deployment data with no vendor lock-in.
+    title: Built for Open Source
+    details: Designed specifically for open source projects and teams. Track deployments across your public repositories with seamless integration.
     
   - icon: ⚙️
     title: Built with Effect-TS
@@ -275,8 +275,8 @@ stage('Report Deployment') {
   </div>
 
   <div>
-    <h3>🔓 Open Source Freedom</h3>
-    <p>AGPL-3.0 license means no vendor lock-in. Self-host on your infrastructure, modify the source code, and keep full control of your data.</p>
+    <h3>🔓 Designed for Open Source</h3>
+    <p>Purpose-built for open source teams. Free tier with generous limits, perfect for public repositories and community-driven projects.</p>
   </div>
 
   <div>
@@ -332,7 +332,7 @@ stage('Report Deployment') {
 
 <div style="text-align: center; padding: 3rem 0; border-top: 1px solid var(--vp-c-divider);">
   <h2 style="margin-bottom: 1rem;">Start Tracking Deployments Today</h2>
-  <p style="font-size: 1.2rem; color: var(--vp-c-text-2); margin-bottom: 2rem;">Open source, self-hosted, and free forever.</p>
+  <p style="font-size: 1.2rem; color: var(--vp-c-text-2); margin-bottom: 2rem;">Free for open source projects, with generous limits.</p>
   <a href="https://app.dtapline.com/demo" class="vp-button brand" style="display: inline-block; padding: 16px 48px; font-size: 1.2rem; border-radius: 10px; text-decoration: none; font-weight: 600;">
     Try the Live Demo →
   </a>

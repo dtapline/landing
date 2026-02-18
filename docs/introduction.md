@@ -62,7 +62,7 @@ Modern GitOps workflows make deployments more automated and declarative, but thi
 - **Automatic Diff URLs**: Generate comparison links between environments for GitHub, GitLab, Bitbucket, and Azure DevOps
 - **CI/CD Integration**: Easy integration with GitHub Actions, GitLab CI, Jenkins, and more
 - **GitOps Compatible**: Works seamlessly with GitOps tools and Kubernetes-native deployment workflows
-- **Open Source & Self-Hosted**: AGPL-3.0 licensed, deploy to AWS Lambda, or bare metal with full control
+- **Built for Open Source**: Designed specifically for open source projects with generous free tier limits
 - **Modern Tech Stack**: Built with Effect-TS for type-safe error handling, dependency injection, and composable effects
 - **Security & Access Control**: API key authentication with scoped permissions and GitHub OAuth support
 - **Team Visibility**: Give your entire team visibility into deployment status
@@ -187,17 +187,17 @@ Dtapline is ideal for teams and individuals who need clear deployment visibility
 - **DevOps Engineers** - Managing multi-service, multi-environment deployments across complex infrastructure
 - **Engineering Teams** - Practicing continuous deployment and needing quick deployment status visibility
 - **Release Managers** - Coordinating deployments across microservices and ensuring consistency
-- **Open Source Projects** - Needing free, self-hosted deployment tracking without vendor lock-in
+- **Open Source Projects** - Free tier with generous limits, perfect for public repositories
 
-## Deployment & Hosting Options
+## Pricing & Plans
 
-Dtapline is designed to be flexible in how you deploy it:
+Dtapline offers flexible pricing to suit different needs:
 
-- **Self-Hosted**: Full control over your data and infrastructure
-- **AWS Lambda**: Serverless deployment with included Terraform configuration
-- **Bare Metal**: Traditional server deployment
+- **Free Tier**: Perfect for open source projects and small teams with generous usage limits
+- **Pro**: Advanced features and higher limits for growing teams
+- **Enterprise**: Custom solutions with dedicated support
 
-All deployment options are AGPL-3.0 licensed, ensuring transparency and no vendor lock-in.
+Visit [dtapline.com](https://dtapline.com) for detailed pricing information.
 
 ## Support
 
