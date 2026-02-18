@@ -20,12 +20,12 @@ export default defineConfig({
     ["meta", { name: "og:site_name", content: "Dtapline" }],
     [
       "meta",
-      { name: "og:image", content: "https://dtapline.com/showcase.png" },
+      { name: "og:image", content: "https://dtapline.com/showcase.gif" },
     ],
     ["meta", { name: "twitter:card", content: "summary_large_image" }],
     [
       "meta",
-      { name: "twitter:image", content: "https://dtapline.com/showcase.png" },
+      { name: "twitter:image", content: "https://dtapline.com/showcase.gif" },
     ],
     // Google Analytics
     [

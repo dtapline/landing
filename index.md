@@ -9,7 +9,7 @@ hero:
   text: Visualize Deployments Across Your Environments
   tagline: Track what's deployed where and when with a beautiful matrix overview. Integrate with any CI/CD in one line of code.
   image:
-    src: /showcase.png
+    src: /showcase.gif
     alt: Dtapline deployment matrix dashboard
   actions:
     - theme: brand
@@ -171,7 +171,7 @@ stage('Report Deployment') {
 ## Dashboard Preview
 
 <div class="screenshot-container">
-  <img src="/showcase.png" alt="Dtapline deployment matrix dashboard showing services across multiple environments" />
+  <img src="/showcase.gif" alt="Dtapline deployment matrix dashboard showing services across multiple environments" />
 </div>
 
 <div style="text-align: center; margin: 2rem 0;">
