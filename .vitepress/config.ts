@@ -66,10 +66,12 @@ function nav() {
   return [
     { text: "Home", link: "/" },
     { text: "Docs", link: "/docs/cli-integration", activeMatch: "/docs/" },
-    { text: "Demo", link: "https://app.dtapline.com/demo" },
-    {
-      text: "GitHub",
-      link: "https://github.com/dtapline/dtapline",
+    { 
+      text: "Account",
+      items: [
+        { text: "Login", link: "https://app.dtapline.com/login" },
+        { text: "Sign Up", link: "https://app.dtapline.com/signup" },
+      ]
     },
   ];
 }

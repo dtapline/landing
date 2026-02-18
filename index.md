@@ -7,7 +7,7 @@ titleTemplate: Track and visualize deployments across your environments
 hero:
   name: Dtapline
   text: Visualize Deployments Across Your Environments
-  tagline: Track what's deployed where with an Octopus-inspired 2D matrix. Integrate with any CI/CD in one line of code.
+  tagline: Track what's deployed where and when with a beautiful matrix overview. Integrate with any CI/CD in one line of code.
   image:
     src: /showcase.png
     alt: Dtapline deployment matrix dashboard
@@ -16,11 +16,11 @@ hero:
       text: View Live Demo
       link: https://app.dtapline.com/demo
     - theme: alt
-      text: Get Started
-      link: /docs/cli-integration
+      text: Make an account
+      link: https://app.dtapline.com/signup
     - theme: alt
-      text: GitHub
-      link: https://github.com/dtapline/dtapline
+      text: CLI Guide
+      link: /docs/cli-integration
 
 features:
   - icon: 📊
