@@ -19,8 +19,8 @@ hero:
       text: Make an account
       link: https://app.dtapline.com/signup
     - theme: alt
-      text: CLI Guide
-      link: /docs/cli-integration
+      text: Get Started
+      link: /docs/introduction#getting-started
 
 features:
   - icon: 📊
@@ -31,17 +31,17 @@ features:
     title: One-Line CI/CD Integration
     details: Add a single CLI command to your pipeline. Works with GitHub Actions, GitLab CI, Jenkins, Azure DevOps, CircleCI, and any CI/CD platform.
     
-  - icon: 🎯
-    title: Smart Version Extraction
-    details: Automatically extract semantic versions from git tags using customizable regex patterns. Falls back to commit SHA when no tag matches.
-    
   - icon: 🔗
     title: Automatic Diff URLs
     details: Generate comparison links between environments for GitHub, GitLab, Bitbucket, and Azure DevOps. Review changes before promoting to production.
     
+  - icon: 🔄
+    title: GitOps Compatible
+    details: Works seamlessly with GitOps and Kubernetes-native deployment workflows. Track deployments regardless of how they're deployed.
+    
   - icon: 🏠
     title: Open Source & Self-Hosted
-    details: AGPL-3.0 licensed. Deploy to AWS Lambda, Docker, or bare metal. Full control over your deployment data with no vendor lock-in.
+    details: AGPL-3.0 licensed. Deploy to AWS Lambda, or bare metal. Full control over your deployment data with no vendor lock-in.
     
   - icon: ⚙️
     title: Built with Effect-TS
@@ -193,7 +193,6 @@ stage('Report Deployment') {
 
 ### ⚙️ Smart Automation
 - **Auto-Creation**: Services and environments created automatically on first deployment
-- **Version Extraction**: Regex patterns extract versions from git tags (e.g., `v1.2.3` → `1.2.3`)
 - **Diff URL Generation**: Automatic comparison links between environments
 - **CI/CD Platform Detection**: Auto-detects GitHub Actions, GitLab CI, etc.
 
@@ -205,7 +204,6 @@ stage('Report Deployment') {
 
 ### 📈 Deployment History & Analytics
 - **Complete Audit Trail**: Every deployment recorded with full metadata
-- **Filtering & Search**: By environment, service, status, date range
 - **Timeline View**: Visual history for each service-environment pair
 - **Status Tracking**: Monitor in-progress deployments
 
@@ -319,7 +317,7 @@ function captureEmail(tier) {
 
   <div>
     <h3>📦 Flexible Deployment</h3>
-    <p>Deploy to AWS Lambda (serverless), Docker containers, or traditional servers. Complete Terraform infrastructure included.</p>
+    <p>Deploy to AWS Lambda (serverless), or traditional servers. Complete Terraform infrastructure included.</p>
   </div>
 
 </div>

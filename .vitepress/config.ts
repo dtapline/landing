@@ -65,7 +65,7 @@ export default defineConfig({
 function nav() {
   return [
     { text: "Home", link: "/" },
-    { text: "Docs", link: "/docs/cli-integration", activeMatch: "/docs/" },
+    { text: "Docs", link: "/docs/introduction", activeMatch: "/docs/" },
     { 
       text: "Account",
       items: [
@@ -78,6 +78,10 @@ function nav() {
 
 function sidebarDocs() {
   return [
+    {
+      text: "Introduction",
+      link: "/docs/introduction",
+    },
     {
       text: "CLI Integration",
       link: "/docs/cli-integration",
