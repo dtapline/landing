@@ -251,38 +251,17 @@ stage('Report Deployment') {
     </ul>
     <div style="text-align: center; margin-top: 1rem;">
       <p style="font-weight: 600; margin-bottom: 0.5rem;">Get notified when Pro launches:</p>
-      <div class="email-capture">
-        <input type="email" placeholder="your@email.com" id="pro-email" />
-        <button onclick="captureEmail('pro')">Notify Me</button>
-      </div>
+      <form name="pro-waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success" class="email-capture">
+        <input type="hidden" name="form-name" value="pro-waitlist" />
+        <input type="hidden" name="bot-field" />
+        <input type="email" name="email" placeholder="your@email.com" required />
+        <button type="submit">Notify Me</button>
+      </form>
     </div>
   </div>
 
 </div>
 
-<script setup>
-function captureEmail(tier) {
-  const emailInput = document.getElementById(`${tier}-email`);
-  const email = emailInput?.value;
-  
-  if (!email || !email.includes('@')) {
-    alert('Please enter a valid email address');
-    return;
-  }
-  
-  // TODO: Integrate with your email collection service (e.g., Mailchimp, ConvertKit, etc.)
-  // For now, just show a confirmation
-  alert(`Thanks for your interest in Dtapline ${tier.charAt(0).toUpperCase() + tier.slice(1)}! We'll notify you at ${email}`);
-  emailInput.value = '';
-  
-  // You can also send to a backend endpoint:
-  // fetch('/api/waitlist', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({ email, tier })
-  // });
-}
-</script>
 
 ---
 
