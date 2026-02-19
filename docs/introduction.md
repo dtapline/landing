@@ -203,7 +203,7 @@ Visit [dtapline.com](https://dtapline.com) for detailed pricing information.
 
 Need help? We're here for you:
 
-- **GitHub Discussions**: [github.com/dtapline/dtapline/discussions](https://github.com/dtapline/dtapline/discussions)
+- **GitHub Discussions**: [github.com/orgs/dtapline/discussions](https://github.com/orgs/dtapline/discussions)
 - **GitHub Issues**: [github.com/dtapline/dtapline/issues](https://github.com/dtapline/dtapline/issues)
 - **Documentation**: You're reading it!
 

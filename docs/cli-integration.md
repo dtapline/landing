@@ -441,5 +441,5 @@ See API documentation for complete reference.
 
 ## Need Help?
 
-- **GitHub Discussions**: [github.com/dtapline/dtapline/discussions](https://github.com/dtapline/dtapline/discussions)
+- **GitHub Discussions**: [github.com/orgs/dtapline/discussions](https://github.com/orgs/dtapline/discussions)
 - **GitHub Issues**: [github.com/dtapline/dtapline/issues](https://github.com/dtapline/dtapline/issues)

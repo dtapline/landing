@@ -748,5 +748,5 @@ catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
 ## Need More Help?
 
 - [CLI Integration Guide](/docs/cli-integration)
-- [GitHub Discussions](https://github.com/dtapline/dtapline/discussions)
+- [GitHub Discussions](https://github.com/orgs/dtapline/discussions)
 - [GitHub Issues](https://github.com/dtapline/dtapline/issues)

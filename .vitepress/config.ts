@@ -53,13 +53,11 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: "https://github.com/dtapline/dtapline/edit/main/landing/:path",
+      pattern: "https://github.com/dtapline/landing/edit/main/:path",
       text: "Edit this page on GitHub",
     },
 
-    socialLinks: [
-      { icon: "github", link: "https://github.com/dtapline/dtapline" },
-    ],
+    socialLinks: [{ icon: "github", link: "https://github.com/dtapline" }],
 
     footer: {
       message: "Built with modern technology for open source teams.",
