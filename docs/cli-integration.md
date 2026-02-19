@@ -37,7 +37,7 @@ Report a deployment to Dtapline.
 **Syntax:**
 
 ```bash
-dtapline deploy <environment> <service> <commit> [options]
+dtapline deploy <environment> <service> [<commit>] [options]
 ```
 
 **Arguments:**
@@ -46,44 +46,95 @@ dtapline deploy <environment> <service> <commit> [options]
 |----------|----------|-------------|
 | `environment` | ✅ | Target environment (e.g., `production`, `staging`, `dev`) |
 | `service` | ✅ | Service name (e.g., `api-service`, `web-frontend`) |
-| `commit` | ✅ | Git commit SHA (full or short) |
+| `commit` | ⚠️ | Git commit SHA (auto-detected from CI/CD or local git if not provided) |
 
 **Options:**
 
 | Option | Type | Description |
 |--------|------|-------------|
 | `--api-key <key>` | string | API key for authentication (or use `DTAPLINE_API_KEY` env var) |
-| `--server-url <url>` | string | Dtapline API server URL (default: `https://app.dtapline.com`) |
+| `--server-url <url>` | string | Dtapline API server URL (or use `DTAPLINE_SERVER_URL` env var, default: `https://api.dtapline.com`) |
+| `--git-tag <tag>` | string | Git tag (auto-detected from CI/CD if available) |
 | `--deployed-version <version>` | string | Semantic version (e.g., `v1.2.3`, `1.2.3`) |
 | `--pr-url <url>` | string | Pull request URL |
-| `--deployed-by <name>` | string | Who/what triggered the deployment |
-| `--status <status>` | string | Deployment status: `success`, `failed`, `in_progress`, `rolled_back` |
-| `--build-url <url>` | string | Build/CI pipeline URL |
+| `--deployed-by <name>` | string | Who/what triggered the deployment (auto-detected from CI/CD) |
+| `--status <status>` | string | Deployment status: `success`, `failed`, `in_progress`, `rolled_back` (default: `success`) |
+| `--build-url <url>` | string | Build/CI pipeline URL (auto-detected from CI/CD) |
 | `--release-notes <notes>` | string | Release notes or changelog |
+
+## Auto-Detection Features
+
+The CLI automatically detects metadata from your environment, making integration simpler:
+
+### Commit SHA Auto-Detection
+
+The `<commit>` argument is optional. If not provided, the CLI uses this fallback chain:
+
+1. **CI/CD environment variables** - Detects from 12 platforms (GitHub Actions, GitLab CI, CircleCI, etc.)
+2. **Local git repository** - Runs `git rev-parse HEAD`
+3. **Error** - If neither is available
+
+```bash
+# Minimal command - commit SHA auto-detected
+dtapline deploy production api-service --status success
+
+# Explicit commit SHA
+dtapline deploy production api-service abc123def456 --status success
+```
+
+### Supported CI/CD Platforms
+
+The CLI automatically detects and extracts metadata from:
+
+- ✅ **GitHub Actions** - commit, branch, tags, actor, repository URL
+- ✅ **GitLab CI** - commit, branch, tags, actor, project URL
+- ✅ **Azure Pipelines** - commit, branch, tags, actor, repository URL
+- ✅ **CircleCI** - commit, branch, tags, username, repository URL
+- ✅ **Jenkins** - commit, branch, tags, build user, git URL
+- ✅ **Travis CI** - commit, branch, tags, repository URL
+- ✅ **Bitbucket Pipelines** - commit, branch, tags, git URL
+- ✅ **AWS CodeBuild** - commit, branch, repository URL, initiator
+- ✅ **Google Cloud Build** - commit, branch, tags
+- ✅ **Drone CI** - commit, branch, tags, author, repository link
+- ✅ **TeamCity** - commit SHA
+- ✅ **Bamboo** - commit, branch, repository URL, username
+
+### Auto-Filled Fields
+
+When running in CI/CD, these fields are automatically populated if not explicitly provided:
+
+- **`--git-tag`** - Extracted from CI/CD environment (e.g., `v1.2.3`)
+- **`--deployed-by`** - Set to the CI/CD actor (username) or platform name
+- **`--build-url`** - Set to the CI/CD build/pipeline URL
 
 **Examples:**
 
 ```bash
-# Minimal deployment
-dtapline deploy production api-service abc123def456
+# Simplest command - everything auto-detected in CI/CD
+dtapline deploy production api-service --status success
 
-# Full metadata
+# Auto-detected commit from local git
+dtapline deploy staging web-frontend --status success
+
+# Explicit commit SHA
+dtapline deploy production api-service abc123def456 --status success
+
+# Full metadata (overrides auto-detection)
 dtapline deploy production api-service abc123def456 \
+  --git-tag v1.2.3 \
   --deployed-version v1.2.3 \
   --pr-url https://github.com/org/repo/pull/123 \
-  --deployed-by "GitHub Actions" \
+  --deployed-by "Jane Doe" \
   --status success \
   --build-url https://github.com/org/repo/actions/runs/123456 \
   --release-notes "Fixed critical authentication bug"
 
-# Using npx
-npx @dtapline/cli deploy staging web-frontend def456abc789 \
-  --deployed-version v0.9.5 \
-  --status success
+# Using npx (no installation required)
+npx @dtapline/cli deploy staging web-frontend --status success
 
 # Custom server URL (self-hosted)
-dtapline deploy production my-service abc123 \
-  --server-url https://dtapline.mycompany.com
+export DTAPLINE_SERVER_URL=https://dtapline.mycompany.com
+dtapline deploy production my-service --status success
 ```
 
 ### `dtapline --version`
@@ -112,7 +163,7 @@ The CLI requires an API key for authentication. You can provide it in two ways:
 
 ```bash
 export DTAPLINE_API_KEY=cm_your_api_key_here
-dtapline deploy production my-service abc123
+dtapline deploy production my-service --status success
 ```
 
 This is the recommended approach for CI/CD pipelines as it keeps secrets out of command history and logs.
@@ -120,10 +171,27 @@ This is the recommended approach for CI/CD pipelines as it keeps secrets out of 
 ### 2. Command-Line Option
 
 ```bash
-dtapline deploy production my-service abc123 --api-key cm_your_api_key_here
+dtapline deploy production my-service --api-key cm_your_api_key_here --status success
 ```
 
 ⚠️ **Warning**: Using `--api-key` exposes your key in command history and logs. Only use for local testing.
+
+## Server URL Configuration
+
+You can configure the Dtapline API server URL in three ways (in order of precedence):
+
+1. **Command-line option**: `--server-url https://api.dtapline.com`
+2. **Environment variable**: `export DTAPLINE_SERVER_URL=https://api.dtapline.com`
+3. **Default**: `https://api.dtapline.com`
+
+```bash
+# Using environment variable
+export DTAPLINE_SERVER_URL=https://dtapline.mycompany.com
+dtapline deploy production my-service --status success
+
+# Using command-line option
+dtapline deploy production my-service --server-url https://dtapline.mycompany.com --status success
+```
 
 ## Getting an API Key
 
@@ -137,7 +205,46 @@ dtapline deploy production my-service abc123 --api-key cm_your_api_key_here
 
 ## CI/CD Integration Patterns
 
-### Pattern 1: Report on Success
+With auto-detection, integrating Dtapline into your CI/CD pipeline is simpler than ever.
+
+### Pattern 1: Minimal Integration (Recommended)
+
+Let the CLI auto-detect all metadata:
+
+```yaml
+# GitHub Actions
+- name: Report Deployment
+  env:
+    DTAPLINE_API_KEY: ${{ secrets.DTAPLINE_API_KEY }}
+  run: dtapline deploy production my-service --status success
+```
+
+```yaml
+# GitLab CI
+deploy:report:
+  stage: deploy
+  script:
+    - dtapline deploy production my-service --status success
+  variables:
+    DTAPLINE_API_KEY: $CI_DTAPLINE_API_KEY
+```
+
+```yaml
+# Azure Pipelines
+- script: dtapline deploy production my-service --status success
+  env:
+    DTAPLINE_API_KEY: $(DTAPLINE_API_KEY)
+  displayName: 'Report Deployment'
+```
+
+The CLI automatically detects:
+- ✅ Commit SHA from CI environment or git
+- ✅ Git tags (e.g., `v1.2.3`)
+- ✅ Actor/username who triggered the deployment
+- ✅ Build URL for the CI/CD pipeline
+- ✅ Repository URL and branch information
+
+### Pattern 2: Report on Success Only
 
 Only report deployments that succeeded:
 
@@ -149,10 +256,7 @@ Only report deployments that succeeded:
   if: success()
   env:
     DTAPLINE_API_KEY: ${{ secrets.DTAPLINE_API_KEY }}
-  run: |
-    dtapline deploy production my-service ${{ github.sha }} \
-      --deployed-version ${{ github.ref_name }} \
-      --status success
+  run: dtapline deploy production my-service --status success
 ```
 
 ### Pattern 2: Report Success or Failure
@@ -174,10 +278,7 @@ Report all deployment attempts with appropriate status:
     else
       STATUS="failed"
     fi
-    
-    dtapline deploy production my-service ${{ github.sha }} \
-      --deployed-version ${{ github.ref_name }} \
-      --status $STATUS
+    dtapline deploy production my-service --status $STATUS
 ```
 
 ### Pattern 3: Report In-Progress → Success/Failed
@@ -188,9 +289,7 @@ Track long-running deployments:
 - name: Report In-Progress
   env:
     DTAPLINE_API_KEY: ${{ secrets.DTAPLINE_API_KEY }}
-  run: |
-    dtapline deploy production my-service ${{ github.sha }} \
-      --status in_progress
+  run: dtapline deploy production my-service --status in_progress
 
 - name: Deploy Application
   id: deploy
@@ -202,9 +301,7 @@ Track long-running deployments:
     DTAPLINE_API_KEY: ${{ secrets.DTAPLINE_API_KEY }}
   run: |
     STATUS="${{ steps.deploy.outcome == 'success' && 'success' || 'failed' }}"
-    dtapline deploy production my-service ${{ github.sha }} \
-      --deployed-version ${{ github.ref_name }} \
-      --status $STATUS
+    dtapline deploy production my-service --status $STATUS
 ```
 
 ### Pattern 4: Matrix Deployments
@@ -223,10 +320,7 @@ steps:
   - name: Report to Dtapline
     env:
       DTAPLINE_API_KEY: ${{ secrets.DTAPLINE_API_KEY }}
-    run: |
-      dtapline deploy production ${{ matrix.service }} ${{ github.sha }} \
-        --deployed-version ${{ github.ref_name }} \
-        --status success
+    run: dtapline deploy production ${{ matrix.service }} --status success
 ```
 
 ### Pattern 5: Monorepo with Changed Services
